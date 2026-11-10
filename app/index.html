@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mascot Booth: make your mascot talk</title>
+<meta name="description" content="Upload your mascot, give it a voice, and export a talking animation. Free, in your browser, by Zeke & Learn.">
+<meta name="theme-color" content="#15171C">
+<link rel="icon" type="image/png" href="assets/brand/favicon.png">
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero zl-stage ember">
+  <div class="floor" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="https://www.facebook.com/zekeandlearn" target="_blank" rel="noopener" aria-label="Zeke &amp; Learn on Facebook">
+        <img class="mark" src="assets/brand/logo-mark.webp" alt="" width="134" height="160">
+        <img class="word" src="assets/brand/logo-wordmark.webp" alt="zeke&amp;learn" width="640" height="92">
+      </a>
+      <div class="top-right">
+        <div class="lang"><button data-lang="en">EN</button><button data-lang="tl">TL</button></div>
+        <a class="fb" href="https://www.facebook.com/zekeandlearn" target="_blank" rel="noopener">facebook.com/zekeandlearn</a>
+      </div>
+    </div>
+    <div class="hero-copy">
+      <p class="kicker"><span data-t="kicker"></span><span class="cursor" aria-hidden="true"></span></p>
+      <h1><span data-t="h1a"></span> <em class="hl" data-t="h1b"></em></h1>
+      <p class="lede" data-t="lede"></p>
+      <ul class="pills">
+        <li class="pill"><span class="ok">✓</span><span data-t="pill1"></span></li>
+        <li class="pill"><span class="ok">✓</span><span data-t="pill2"></span></li>
+        <li class="pill"><span class="ok">✓</span><span data-t="pill3"></span></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<div class="page zl-stage dots">
+<div class="wrap">
+<nav class="steps" id="steps">
+  <button data-step="1"><i>1</i><span data-t="step1"></span></button>
+  <button data-step="2"><i>2</i><span data-t="step2"></span></button>
+  <button data-step="3"><i>3</i><span data-t="step3"></span></button>
+  <button data-step="4"><i>4</i><span data-t="step4"></span></button>
+  <button data-step="5"><i>5</i><span data-t="step5"></span></button>
+</nav>
+
+<main>
+  <!-- 1. make poses -->
+  <section class="step" data-step="1">
+    <div class="guide"><img src="assets/guide/zeke-wave.webp" alt=""><div class="bubble"><h2 data-t="s1_title"></h2><p data-t="s1_body"></p></div></div>
+    <div class="cols">
+      <div class="card">
+        <ol class="howto">
+          <li data-t="s1_a"></li><li data-t="s1_b"></li><li data-t="s1_c"></li><li data-t="s1_d"></li>
+        </ol>
+        <div class="row">
+          <button class="btn primary" id="copyPrompt" data-t="s1_copy"></button>
+          <a class="btn" href="https://chatgpt.com/" target="_blank" rel="noopener" data-t="s1_open"></a>
+        </div>
+        <textarea id="prompt" readonly spellcheck="false"></textarea>
+        <p class="tip" data-t="s1_tip"></p>
+        <div class="extra">
+          <h3 data-t="s1m_title"></h3>
+          <p class="muted" data-t="s1m_body"></p>
+          <div class="row"><button class="btn" id="copyMouthPrompt" data-t="s1m_copy"></button></div>
+          <textarea id="mouthPrompt" readonly spellcheck="false"></textarea>
+        </div>
+      </div>
+      <div class="card example">
+        <div class="poses6">
+          <figure><img src="assets/guide/zeke-idle.webp" alt=""><figcaption data-t="pose_idle"></figcaption></figure>
+          <figure><img src="assets/guide/zeke-explain.webp" alt=""><figcaption data-t="pose_explain"></figcaption></figure>
+          <figure><img src="assets/guide/zeke-wave.webp" alt=""><figcaption data-t="pose_wave"></figcaption></figure>
+          <figure><img src="assets/guide/zeke-think.webp" alt=""><figcaption data-t="pose_think"></figcaption></figure>
+          <figure><img src="assets/guide/zeke-thumbs.webp" alt=""><figcaption data-t="pose_thumbs"></figcaption></figure>
+          <figure><img src="assets/guide/zeke-cheer.webp" alt=""><figcaption data-t="pose_cheer"></figcaption></figure>
+        </div>
+      </div>
+    </div>
+    <div class="nav"><span></span><button class="btn primary big" data-go="2" data-t="s1_have"></button></div>
+  </section>
+
+  <!-- 2. upload sheet -->
+  <section class="step" data-step="2">
+    <div class="guide"><img src="assets/guide/zeke-explain.webp" alt=""><div class="bubble"><h2 data-t="s2_title"></h2><p data-t="s2_hint"></p></div></div>
+    <label class="drop" id="sheetDrop">
+      <input type="file" accept="image/*" id="sheetFile" hidden>
+      <div class="drop-icon">⬆</div><div data-t="s2_drop"></div>
+    </label>
+    <p class="status" id="sheetStatus"></p>
+    <div class="posegrid" id="poseGrid"></div>
+    <div class="card mouthcard">
+      <h3 data-t="s2m_title"></h3>
+      <p class="muted" data-t="s2m_hint"></p>
+      <label class="drop small" id="mouthDrop">
+        <input type="file" accept="image/*" id="mouthFile" hidden>
+        <div class="drop-icon">⬆</div><div data-t="s2m_drop"></div>
+      </label>
+      <p class="status" id="mouthStatus"></p>
+      <div class="mouthgrid" id="mouthGrid"></div>
+    </div>
+    <div class="nav"><button class="btn" data-go="1" data-t="back"></button><button class="btn primary big" data-go="3" id="to3" disabled data-t="next"></button></div>
+  </section>
+
+  <!-- 3. face setup -->
+  <section class="step" data-step="3">
+    <div class="guide"><img src="assets/guide/zeke-think.webp" alt=""><div class="bubble"><h2 data-t="s3_title"></h2><p data-t="s3_body"></p></div></div>
+    <div class="face">
+      <div class="card face-edit">
+        <div class="face-head"><b id="facePoseLabel"></b><span class="muted" data-t="s3_auto"></span></div>
+        <div class="facetool"><div class="seg" id="faceTool"><button data-v="mouth" class="on mouth" data-t="s3_mouthbox"></button><button data-v="eye0" class="eye"><span data-t="s3_eyebox"></span> 1</button><button data-v="eye1" class="eye"><span data-t="s3_eyebox"></span> 2</button></div><small class="muted" data-t="s3_draw"></small></div>
+        <canvas id="faceCanvas" width="560" height="560"></canvas>
+        <label class="check"><input type="checkbox" id="eyesClosed"> <span data-t="s3_closed"></span></label>
+      </div>
+      <div class="card face-preview">
+        <canvas id="facePreview" width="360" height="440"></canvas>
+        <div class="thumbs" id="faceThumbs"></div>
+        <div class="row"><button class="btn" id="facePrev" data-t="s3_prev"></button><button class="btn" id="faceNext" data-t="s3_next"></button></div>
+      </div>
+    </div>
+    <div class="card cc-export">
+      <div><b data-t="s3_cc_title"></b><p class="tip" data-t="s3_cc_body"></p></div>
+      <div class="row">
+        <input type="text" id="ccName" spellcheck="false" autocomplete="off" placeholder="my-mascot" aria-label="Mascot name">
+        <button class="btn" id="ccExport" data-t="s3_cc_btn"></button>
+      </div>
+      <p class="status" id="ccStatus"></p>
+    </div>
+    <div class="nav"><button class="btn" data-go="2" data-t="back"></button><button class="btn primary big" data-go="4" data-t="s3_done"></button></div>
+  </section>
+
+  <!-- 4. voice -->
+  <section class="step" data-step="4">
+    <div class="guide"><img src="assets/guide/zeke-thumbs.webp" alt=""><div class="bubble"><h2 data-t="s4_title"></h2><p class="muted" data-t="privacy"></p></div></div>
+    <div class="tabs" id="voiceTabs">
+      <button data-tab="upload" class="on" data-t="s4_upload"></button><button data-tab="record" data-t="s4_record"></button><button data-tab="eleven" data-t="s4_eleven"></button>
+    </div>
+    <div class="card tab" data-tab="upload">
+      <label class="drop small"><input type="file" accept="audio/*,.mp3,.wav,.m4a" id="audioFile" hidden><div class="drop-icon">♪</div><div data-t="s4_drop"></div></label>
+    </div>
+    <div class="card tab" data-tab="record" hidden>
+      <button class="btn primary big rec" id="recBtn"><i class="dot"></i><span data-t="s4_rec_start"></span></button>
+      <span class="rec-time" id="recTime"></span>
+      <p class="muted" data-t="s4_rec_hint"></p>
+    </div>
+    <div class="card tab" data-tab="eleven" hidden>
+      <label class="field"><span data-t="s4_el_key"></span><input type="password" id="elKey" autocomplete="off" spellcheck="false"><small class="muted" data-t="s4_el_keyhint"></small></label>
+      <div class="row"><button class="btn" id="elLoad" data-t="s4_el_load"></button><select id="elVoice"></select></div>
+      <label class="field"><span data-t="s4_el_text"></span><textarea id="elText" rows="4"></textarea><small class="muted" data-t="s4_el_tags"></small></label>
+      <button class="btn primary" id="elGo" data-t="s4_el_go"></button>
+    </div>
+    <div class="row sample"><span class="muted" data-t="s4_sample_q"></span><button class="btn" id="sampleVoice" data-t="s4_sample_btn"></button></div>
+    <p class="status" id="voiceStatus"></p>
+    <audio id="voicePlayer" controls hidden></audio>
+    <div class="card sharp" id="sharpCard" hidden>
+      <h3 data-t="s4s_title"></h3>
+      <p class="muted" data-t="s4s_hint"></p>
+      <label class="field"><span data-t="s4s_text"></span><textarea id="sharpText" rows="3" spellcheck="false"></textarea><small class="muted" data-t="s4s_text_hint"></small></label>
+      <div class="row"><select id="sharpLang"><option value="en" data-t="s4s_en"></option><option value="tl" data-t="s4s_tl"></option></select><button class="btn primary" id="sharpGo" data-t="s4s_go"></button></div>
+      <p class="status" id="sharpStatus"></p>
+    </div>
+    <div class="nav"><button class="btn" data-go="3" data-t="back"></button><button class="btn primary big" data-go="5" id="to5" disabled data-t="next"></button></div>
+  </section>
+
+  <!-- 5. animate + export -->
+  <section class="step" data-step="5">
+    <div class="studio">
+      <div class="stage-wrap">
+        <div class="stage checker" id="stage"><canvas id="stageCanvas"></canvas></div>
+        <div class="transport"><button class="btn primary" id="playBtn" data-t="s5_play"></button><span id="clock" class="mono">0.0s</span></div>
+        <div class="timeline-label muted" data-t="s5_timeline"></div>
+        <div class="timeline" id="timeline"><canvas id="waveCanvas"></canvas><div id="poseBlocks"></div><div class="playhead" id="playhead"></div></div>
+        <div class="posepick" id="posePick" hidden></div>
+      </div>
+      <div class="card controls">
+        <div class="ctl"><span data-t="s5_size"></span><div class="seg" id="sizeSeg"><button data-v="9:16" class="on">9:16</button><button data-v="1:1">1:1</button><button data-v="16:9">16:9</button></div></div>
+        <div class="ctl"><span data-t="s5_bg"></span><div class="swatches" id="bgSwatches">
+          <button data-v="clear" class="sw checker on" data-t-attr="title" data-t="s5_bg_clear"></button>
+          <button data-v="green" class="sw" style="background:#00B140" data-t-attr="title" data-t="s5_bg_green"></button>
+          <button data-v="dark" class="sw" style="background:#15171C" data-t-attr="title" data-t="s5_bg_dark"></button>
+          <button data-v="light" class="sw" style="background:#F6F3EE" data-t-attr="title" data-t="s5_bg_light"></button>
+          <button data-v="glow" class="sw glow" data-t-attr="title" data-t="s5_bg_glow"></button>
+          <label class="sw custom" data-t-attr="title" data-t="s5_bg_custom"><input type="color" id="bgColor" value="#FF783E"></label>
+        </div></div>
+        <div class="ctl"><span data-t="s5_scale"></span><input type="range" id="scaleRange" min="0.3" max="0.95" step="0.01" value="0.62"></div>
+        <div class="ctl"><span data-t="s5_pos"></span><div class="seg" id="posSeg"><button data-v="left" data-t="s5_left"></button><button data-v="center" class="on" data-t="s5_center"></button><button data-v="right" data-t="s5_right"></button></div></div>
+        <div class="ctl"><span data-t="s5_enter"></span><div class="seg" id="enterSeg"><button data-v="pop" class="on" data-t="s5_pop"></button><button data-v="pixel" data-t="s5_pixel"></button><button data-v="slide" data-t="s5_slide"></button><button data-v="none" data-t="s5_none"></button></div></div>
+        <h3 data-t="s5_export"></h3>
+        <button class="export" id="expAlpha"><b data-t="s5_exp_alpha"></b><small data-t="s5_exp_alpha_hint"></small></button>
+        <button class="export" id="expMp4"><b data-t="s5_exp_mp4"></b><small data-t="s5_exp_mp4_hint"></small></button>
+        <div class="progress" id="expProgress" hidden><div></div></div>
+        <p class="status" id="expStatus"></p>
+      </div>
+    </div>
+    <div class="nav"><button class="btn" data-go="4" data-t="back"></button><span></span></div>
+  </section>
+</main>
+
+</div>
+</div>
+
+<footer class="zl-stage ember">
+  <div class="wrap">
+    <div class="endcard">
+      <img class="mark" src="assets/brand/logo-mark.webp" alt="" width="134" height="160" loading="lazy">
+      <img class="word" src="assets/brand/logo-wordmark.webp" alt="zeke&amp;learn" width="640" height="92" loading="lazy">
+      <p class="tagline">Build smarter. Learn together.</p>
+      <h2><span data-t="foot_h_a"></span> <em class="hl" data-t="foot_h_b"></em></h2>
+      <p data-t="foot_body"></p>
+      <a class="btn primary big" href="https://www.facebook.com/zekeandlearn" target="_blank" rel="noopener" data-t="follow"></a>
+      <img class="zeke" src="assets/guide/zeke-thumbs.webp" alt="" aria-hidden="true" width="138" height="360" loading="lazy">
+    </div>
+    <div class="legal">
+      <span><b>zeke&amp;learn</b> · Build smarter. Learn together.</span>
+      <span><span data-t="privacy"></span> · <a href="https://github.com/zekeandlearn/mascot-booth" id="repoLink" target="_blank" rel="noopener">Mascot Booth</a> · MIT</span>
+    </div>
+  </div>
+</footer>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

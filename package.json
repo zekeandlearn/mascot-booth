@@ -1,0 +1,48 @@
+{
+  "name": "mascot-booth",
+  "version": "0.1.0",
+  "description": "Make your mascot talk. A free web app that turns a pose sheet and a voice into a lip-synced, transparent mascot clip, plus an engine for Claude Code and Codex that renders word-synced explainer films.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Zeke Espirito Sebulino (Zeke & Learn)",
+  "homepage": "https://github.com/zekeandlearn/mascot-booth#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zekeandlearn/mascot-booth.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zekeandlearn/mascot-booth/issues"
+  },
+  "keywords": [
+    "mascot",
+    "lip-sync",
+    "talking-character",
+    "explainer-video",
+    "animation",
+    "elevenlabs",
+    "forced-alignment",
+    "claude-code",
+    "codex",
+    "transparent-video"
+  ],
+  "bin": {
+    "mascot-booth": "bin/mascot-booth.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "app": "node tools/serve-app.mjs",
+    "doctor": "node bin/mascot-booth.mjs doctor"
+  },
+  "dependencies": {
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/pixelify-sans": "^5.3.0",
+    "@fontsource/space-grotesk": "^5.3.0",
+    "@huggingface/transformers": "^4.3.2",
+    "mp4-muxer": "^5.2.2",
+    "puppeteer": "^25.16.0",
+    "sharp": "^0.35.5",
+    "webm-muxer": "^5.1.4"
+  }
+}

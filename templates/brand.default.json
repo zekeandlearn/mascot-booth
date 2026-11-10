@@ -1,0 +1,5 @@
+{
+  "name": "Your Brand",
+  "wordmark": "yourbrand",
+  "colors": { "bg": "#15171C", "bg2": "#1d2027", "ink": "#F6F3EE", "mute": "#9aa0ab", "accent": "#FF783E", "accent2": "#347FC5", "good": "#269681", "bad": "#e5484d" }
+}

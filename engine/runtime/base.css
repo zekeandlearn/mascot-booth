@@ -1,0 +1,55 @@
+@font-face { font-family: 'Space Grotesk'; font-weight: 500; src: url('/_fonts/space-grotesk/files/space-grotesk-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Space Grotesk'; font-weight: 700; src: url('/_fonts/space-grotesk/files/space-grotesk-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-weight: 400; src: url('/_fonts/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-weight: 700; src: url('/_fonts/jetbrains-mono/files/jetbrains-mono-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Pixelify Sans'; font-weight: 400; src: url('/_fonts/pixelify-sans/files/pixelify-sans-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Pixelify Sans'; font-weight: 700; src: url('/_fonts/pixelify-sans/files/pixelify-sans-latin-700-normal.woff2') format('woff2'); }
+
+:root {
+  /* brand tokens: film.json "brand" overrides these at boot */
+  --bg: #15171C; --bg2: #1d2027; --ink: #F6F3EE; --mute: #9aa0ab;
+  --accent: #FF783E; --accent2: #347FC5; --good: #269681; --bad: #e5484d;
+  --font: 'Space Grotesk', system-ui, sans-serif; --mono: 'JetBrains Mono', ui-monospace, monospace; --pixel: 'Pixelify Sans', monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #000; overflow: hidden; }
+body { font-family: var(--font); color: var(--ink); -webkit-font-smoothing: antialiased; }
+.cs-root { position: relative; overflow: hidden; background: var(--bg); contain: strict; }
+.cs-layer { position: absolute; inset: 0; pointer-events: none; }
+.cs-scene { position: absolute; inset: 0; will-change: transform, opacity, filter; }
+.cs-scene-inner { position: absolute; inset: 0; }
+.cs-abs { position: absolute; }
+.cs-off { display: none !important; }
+.cs-presenter { position: absolute; }
+.cs-presenter canvas { position: absolute; left: 0; top: 0; }
+.cs-presenter-shadow { position: absolute; height: 26px; border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.55), rgba(0,0,0,0)); }
+
+/* type */
+.cs-title { position: absolute; font-weight: 700; letter-spacing: -0.035em; line-height: 0.98; color: var(--ink); }
+.cs-word { display: inline-block; white-space: pre; will-change: transform, opacity, filter; position: relative; }
+.cs-word.hl { color: var(--accent); }
+.cs-word.hl2 { color: var(--accent2); }
+.cs-word .mark { position: absolute; left: -0.08em; right: -0.08em; bottom: 0.06em; height: 0.36em; background: var(--accent); opacity: .28; transform-origin: left center; z-index: -1; border-radius: 0.06em; }
+.cs-kicker { position: absolute; font-family: var(--pixel); font-size: 34px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.cs-caption { position: absolute; left: 0; right: 0; text-align: center; font-weight: 700; letter-spacing: -0.02em; }
+.cs-caption .cs-word { margin: 0 .16em; }
+.cs-caption .cs-word.on { color: var(--accent); }
+
+/* panels */
+.cs-panel { position: absolute; background: linear-gradient(180deg, #23262e, #1a1c22); border: 2px solid #2e323c; border-radius: 22px; box-shadow: 0 30px 80px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.05); overflow: hidden; }
+.cs-term-bar { height: 54px; display: flex; align-items: center; gap: 12px; padding: 0 22px; background: #1b1d23; border-bottom: 2px solid #2a2e37; }
+.cs-term-bar i { width: 16px; height: 16px; border-radius: 50%; display: block; }
+.cs-term-bar b { margin-left: 14px; font: 500 22px var(--mono); color: var(--mute); }
+.cs-term-body { padding: 26px 30px; font: 400 30px/1.5 var(--mono); color: var(--ink); white-space: pre-wrap; }
+.cs-term-body .p { color: var(--accent); }
+.cs-term-body .c { color: var(--mute); }
+.cs-term-body .g { color: var(--good); }
+.cs-term-body .b { color: var(--accent2); }
+.cs-caret { display: inline-block; width: .6em; height: 1.1em; vertical-align: -0.18em; background: var(--accent); }
+.cs-chip { position: absolute; display: flex; align-items: center; gap: 16px; padding: 18px 28px 18px 20px; border-radius: 999px; background: #20232a; border: 2px solid #343844; font-weight: 700; font-size: 38px; white-space: nowrap; }
+.cs-node { position: absolute; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.cs-node .tile { width: 150px; height: 150px; border-radius: 34px; display: grid; place-items: center; background: #20232a; border: 3px solid #343844; box-shadow: 0 20px 50px rgba(0,0,0,.45); }
+.cs-node .lbl { font-weight: 700; font-size: 34px; letter-spacing: -0.01em; }
+.cs-node .sub { font: 400 22px var(--mono); color: var(--mute); margin-top: -8px; }
+.cs-brand { position: absolute; font-weight: 700; letter-spacing: -0.03em; }
+.cs-brand .amp { color: var(--accent); }

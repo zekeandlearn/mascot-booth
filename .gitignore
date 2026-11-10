@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+
+# secrets: never commit keys
+.env
+.env.*
+
+# films, takes and renders you make locally
+films/
+renders/
+takes/
+*.mp4
+*.mov
+*.webm
+
+# local dev fixtures
+app/_test/

@@ -1,0 +1,9 @@
+{
+  "background": "clear",
+  "size": "medium",
+  "place": "center",
+  "pose": "idle",
+  "enter": { "style": "pop", "t": 0 },
+  "exit": null,
+  "beats": []
+}
