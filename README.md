@@ -99,8 +99,22 @@ Then open http://localhost:4780.
 
 ### Install the engine (optional, for Claude Code / Codex)
 
-Skip this unless you use Claude Code or Codex. You need Node.js 20+ and [ffmpeg](https://ffmpeg.org/download.html) on your `PATH`. `npm install` also downloads a
-headless Chrome for rendering.
+Skip this unless you use Claude Code or Codex.
+
+**The easy way: let your agent do it.** Open Claude Code or Codex and paste this:
+
+```text
+Install Mascot Booth for me from https://github.com/zekeandlearn/mascot-booth.
+1. Check that Node.js 20 or newer, git and ffmpeg are installed. If something is missing,
+   tell me what and how to install it on my system, and wait for me before installing it.
+2. Clone the repo into ~/mascot-booth (or a folder I name), then run `node install.mjs` inside it.
+   That installs the dependencies and the mascot-booth skill, then runs `doctor`.
+3. Show me the doctor output and explain anything marked MISSING.
+4. Tell me to restart you so the mascot-booth skill loads, and what to say to make my first video.
+```
+
+**Or by hand.** You need Node.js 20+, git and [ffmpeg](https://ffmpeg.org/download.html) on your `PATH`.
+`npm install` also downloads a headless Chrome for rendering.
 
 ```bash
 git clone https://github.com/zekeandlearn/mascot-booth.git
