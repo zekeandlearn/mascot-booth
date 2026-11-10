@@ -4,6 +4,8 @@
 
 First public release. Earlier versions were private, under the working name Cutscene.
 
+- The web app is live on GitHub Pages: https://zekeandlearn.github.io/mascot-booth/
+
 **Web app**
 
 - Five steps: make poses with a ready-made ChatGPT prompt, upload and auto cut-out of a 6-pose sheet, face setup

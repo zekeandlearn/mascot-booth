@@ -1,23 +1,42 @@
 # Mascot Booth
 
-**Make your mascot talk.**
+<p align="center"><img src="docs/hero.webp" alt="Mascot Booth: make your mascot talk. Cap Zeke waving, with mouth shapes for M B P, O U, F V and A" width="100%"></p>
+
+<p align="center"><b><a href="https://zekeandlearn.github.io/mascot-booth/">Open Mascot Booth</a></b> · free, no account, runs in your browser</p>
 
 Mascot Booth is a free tool by [Zeke & Learn](https://www.facebook.com/zekeandlearn). Give it a pose sheet of your
 mascot and a voice, and it gives you back a lip-synced talking clip you can drop into any video. No account, no
-uploads: it runs in your browser.
+uploads: everything runs in your browser.
 
-There are two ways to use it:
+## Do I need to install anything?
 
-| | Who it's for | What you get |
+**No.** If you want a talking clip of your mascot, just
+**[open the web app](https://zekeandlearn.github.io/mascot-booth/)** in Chrome or Edge on a computer. There is nothing
+to download, no account and no coding.
+
+<p align="center"><img src="docs/two-ways.webp" alt="Two ways to use it. The web app is for everyone: nothing to install. The engine is optional, only for Claude Code or Codex users." width="100%"></p>
+
+This repo also has an **engine**, and that part is **optional**. It is only for people who already use an AI coding
+agent, [Claude Code](https://claude.com/claude-code) or [Codex](https://openai.com/codex). Once installed, you can ask
+your agent for a whole explainer video ("make a talking explainer about how DNS works") and it writes the script,
+makes the voice, adds motion graphics and sound, and renders the finished film with your mascot as the presenter.
+
+| | The web app | The engine (optional) |
 |---|---|---|
-| **The web app** (`app/`) | Anyone. No coding or editing skills needed. | A talking mascot clip: transparent WebM or MP4. |
-| **The engine** (`bin/`, `engine/`, `skills/`) | People who use Claude Code or Codex. | Whole word-synced explainer films starring your mascot, written, voiced and directed by your agent. |
+| **Who it's for** | Everyone | Claude Code or Codex users |
+| **What you get** | A talking mascot clip (transparent WebM or MP4) | Whole word-synced explainer films |
+| **Install** | Nothing. [Open it in your browser](https://zekeandlearn.github.io/mascot-booth/) | Node.js, ffmpeg, then `node install.mjs` |
+| **Skills needed** | None | Comfortable with a terminal |
 
-> There is no hosted version yet. For now you run it on your own computer (see [Quick start](#quick-start)).
+If you don't use Claude Code or Codex, you can ignore everything about the engine below.
 
-<p align="center"><img src="docs/hero.png" alt="A frame from a demo explainer: a pixel-art character talking, with the spoken words on screen" width="320"></p>
+## How the web app works
+
+<p align="center"><img src="docs/how-it-works.webp" alt="Five steps: make your poses, upload the sheet, face setup, add a voice, animate and export. Everything runs on your computer." width="100%"></p>
 
 ## Features
+
+<p align="center"><img src="docs/features.webp" alt="Features of the web app and the optional engine" width="100%"></p>
 
 **Web app**
 
@@ -29,7 +48,7 @@ There are two ways to use it:
 - **Four ways to add a voice:** upload an audio file, record with your mic, use your own ElevenLabs key, or try the
   **sample voice** first.
 - **Sharper lip sync for your own recording.** Times every letter you said, so the mouth closes on M, B and P, rounds
-  on O and bites on F. It runs on your computer (see [How it works](#how-it-works)).
+  on O and bites on F. It runs on your computer (see [Under the hood](#under-the-hood)).
 - **Optional drawn mouth sheet.** A second prompt gets you 9 drawn mouths for different sounds, so the talking looks
   drawn instead of stretched. Skip it and your mascot talks with its own mouth.
 - **Export a transparent WebM** to layer over anything in Canva, CapCut or Premiere, or an **MP4** on the background
@@ -38,7 +57,7 @@ There are two ways to use it:
   films with it.
 - **English and Taglish** UI, switchable at the top.
 
-**Engine (Claude Code / Codex)**
+**Engine (optional, for Claude Code / Codex)**
 
 - **Letter-timed lip sync** from ElevenLabs (it returns a time for every letter) or from your own recording.
 - **`listen`:** turns your own recording into a take with a time for every letter, using forced alignment (the method
@@ -60,9 +79,15 @@ There are two ways to use it:
 
 ## Quick start
 
-### Run the web app
+### Use the web app
 
-You need [Node.js](https://nodejs.org) 20 or newer. The web app itself has no dependencies to install.
+Open **https://zekeandlearn.github.io/mascot-booth/** in Chrome or Edge on a computer. That's it. (Exporting video
+needs Chrome or Edge.)
+
+### Run the web app on your own computer (optional)
+
+If you'd rather run your own copy, you need [Node.js](https://nodejs.org) 20 or newer. The web app has no
+dependencies to install.
 
 ```bash
 git clone https://github.com/zekeandlearn/mascot-booth.git
@@ -70,11 +95,11 @@ cd mascot-booth
 node tools/serve-app.mjs
 ```
 
-Open http://localhost:4780 in Chrome or Edge on a computer. (Exporting video needs Chrome or Edge.)
+Then open http://localhost:4780.
 
-### Install the engine for Claude Code / Codex
+### Install the engine (optional, for Claude Code / Codex)
 
-You need Node.js 20+ and [ffmpeg](https://ffmpeg.org/download.html) on your `PATH`. `npm install` also downloads a
+Skip this unless you use Claude Code or Codex. You need Node.js 20+ and [ffmpeg](https://ffmpeg.org/download.html) on your `PATH`. `npm install` also downloads a
 headless Chrome for rendering.
 
 ```bash
@@ -91,7 +116,7 @@ This installs dependencies, installs the `mascot-booth` skill for Claude Code (a
 The first time, your agent turns your character art into a presenter. The quickest way is the web app: set up your
 mascot there and click **Export for Claude Code**.
 
-## How it works
+## Under the hood
 
 ### The web app
 
@@ -107,7 +132,7 @@ mascot there and click **Export for Claude Code**.
    - Without either, the mouth follows the loudness and brightness of the voice, which works in any language.
 4. **Export.** The browser draws every frame and encodes the video on your computer.
 
-### The engine
+### The engine (optional)
 
 1. **Script.** The agent researches, writes in your voice and checks every claim. You approve the wording.
 2. **Voice.** One whole-script take from your ElevenLabs voice, or your own recording of the script. You pick the take
@@ -174,6 +199,8 @@ If you do use it, here is exactly what happens to your key:
 
 - **Your images and voice stay on your computer.** Cutting out poses, lip sync and video export all happen in your
   browser. Nothing is uploaded.
+- **Hosting:** the web app is a set of static files served by GitHub Pages. GitHub delivers the page like any
+  website; after that, the app runs entirely in your browser.
 - **No account and no analytics.** The only thing saved is your language choice, in your browser's local storage
   (`mascot-booth-lang`).
 - **The network calls the web app makes:**
@@ -200,7 +227,11 @@ people who use Claude Code or Codex.
 Chrome or Edge on a computer. Other browsers may not be able to export video.
 
 **Is there a website I can just open?**
-Not yet. For now, run it locally with `node tools/serve-app.mjs`.
+Yes: https://zekeandlearn.github.io/mascot-booth/ (Chrome or Edge on a computer).
+
+**Do I need to install the engine?**
+No. The web app does everything you need for a talking mascot clip. The engine is an optional extra for people who
+use Claude Code or Codex and want their agent to make whole explainer videos. If you don't use either, skip it.
 
 **My pose sheet was rejected. What now?**
 The app needs exactly 6 separate poses. Ask ChatGPT to "try again, keep the same character", with more space between
@@ -242,7 +273,7 @@ Not covered by MIT, and **all rights reserved**:
 
 - The Zeke & Learn logo and icons (`app/assets/brand/`)
 - The Cap Zeke guide art (`app/assets/guide/`)
-- The pixel Zeke character in `docs/`
+- The Cap Zeke images and graphics in `docs/`
 - The sample voice (`app/assets/sample/`), an AI clone of Zeke's voice made with ElevenLabs
 
 If you fork this and host your own copy, replace those with your own. Fonts are under the SIL Open Font License 1.1

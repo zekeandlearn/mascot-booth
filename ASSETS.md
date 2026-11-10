@@ -11,7 +11,7 @@ Copyright (c) 2026 Zeke Espirito Sebulino (Zeke & Learn). **All rights reserved.
 |---|---|
 | `app/assets/brand/` | The Zeke & Learn logo mark, wordmark and icons |
 | `app/assets/guide/` | The "Cap Zeke" guide character art |
-| `docs/` | The pixel Zeke character in docs and demo renders |
+| `docs/` | The Cap Zeke images and graphics used in the README |
 | `app/assets/sample/` | The sample voice (an AI clone of Zeke's voice, made with ElevenLabs) and its timing data |
 
 You may not use these as a presenter, mascot, logo, avatar, voice or training data, or in your own products. They
