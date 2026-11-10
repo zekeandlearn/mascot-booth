@@ -69,8 +69,30 @@ h3 { margin: 22px 0 10px; font: 400 13px/1.3 var(--pixel); letter-spacing: .04em
 .brand .mark { height: 34px; width: auto; }
 .brand .word { height: 22px; width: auto; }
 .top-right { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-.topbar a.fb { color: var(--mute); font-size: 14px; text-decoration: none; }
-.topbar a.fb:hover { color: var(--ink); }
+/* Follow button, top right: nudges every few seconds so people notice it (off for reduced motion) */
+.follow-top { padding: 9px 15px 9px 12px; gap: 6px; font-size: 14px; border-radius: 999px;
+  animation: nudge 8s ease-in-out 2.5s infinite, ring 8s ease-out 2.5s infinite; }
+.follow-top .fb-ic { width: 17px; height: 17px; flex: none; }
+.follow-top::after { border-radius: 999px; animation: shine-cycle 8s ease-out 2.5s infinite; }
+.follow-top:hover { animation-play-state: paused; }
+.follow-top:hover::after { animation: shine .7s ease-out; }
+@keyframes nudge {
+  0%, 85%, 100% { transform: none; }
+  87% { transform: translateY(-3px) scale(1.07) rotate(-5deg); }
+  89% { transform: translateY(-3px) scale(1.07) rotate(5deg); }
+  91% { transform: translateY(-2px) scale(1.05) rotate(-3deg); }
+  93% { transform: translateY(-1px) scale(1.03) rotate(2deg); }
+  95% { transform: none; }
+}
+@keyframes ring {
+  0%, 85% { box-shadow: 0 10px 30px rgba(255,120,62,.28), 0 0 0 0 rgba(255,120,62,.6); }
+  99%, 100% { box-shadow: 0 10px 30px rgba(255,120,62,.28), 0 0 0 14px rgba(255,120,62,0); }
+}
+@keyframes shine-cycle {
+  0%, 86% { transform: translateX(-120%) skewX(-20deg); }
+  95%, 100% { transform: translateX(260%) skewX(-20deg); }
+}
+@media (prefers-reduced-motion: reduce) { .follow-top, .follow-top::after { animation: none; } }
 .lang { display: flex; border: 2px solid var(--line2); border-radius: 999px; overflow: hidden; background: rgba(32,35,42,.85); }
 .lang button { background: none; border: 0; color: var(--mute); font: 400 12px var(--pixel); padding: 7px 12px; cursor: pointer; letter-spacing: .06em; }
 .lang button.on { background: var(--accent); color: var(--accent-ink); }
@@ -240,7 +262,7 @@ footer { padding: 64px 0 0; text-align: center; }
   .cols, .face, .studio { grid-template-columns: 1fr; }
   .wrap { padding: 0 16px; }
   .brand .mark { height: 28px; } .brand .word { height: 18px; }
-  .topbar a.fb { display: none; }
+  .follow-top { padding: 8px 12px 8px 10px; font-size: 13px; }
   .hero-copy { padding-top: 24px; }
   .lede { font-size: 16px; }
   .endcard img.zeke { height: 170px; }
@@ -279,4 +301,14 @@ footer { padding: 64px 0 0; text-align: center; }
 @supports (corner-shape: squircle) {
   :root { --r: 46px; --r-sm: 30px; }
   .card, .bubble, .drop, .posecard, .export, .stage, .poses6 { corner-shape: squircle; }
+}
+
+/* small phones: logo, language and Follow on one row */
+@media (max-width: 420px) {
+  .topbar { flex-wrap: nowrap; }
+  .top-right { gap: 8px; flex-wrap: nowrap; }
+  .brand .mark { height: 24px; } .brand .word { height: 15px; }
+  .lang button { padding: 6px 8px; }
+  .follow-top { padding: 7px 11px 7px 9px; }
+  .follow-top .fb-ic { width: 15px; height: 15px; }
 }
