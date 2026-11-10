@@ -246,5 +246,5 @@ Not covered by MIT, and **all rights reserved**:
 - The sample voice (`app/assets/sample/`), an AI clone of Zeke's voice made with ElevenLabs
 
 If you fork this and host your own copy, replace those with your own. Fonts are under the SIL Open Font License 1.1
-(license files are in `app/assets/fonts/`). The speech models are not bundled. See [LICENSE](LICENSE) for the full
-text.
+(license files are in `app/assets/fonts/`). The speech models are not bundled. Full terms: [LICENSE](LICENSE) (code)
+and [ASSETS.md](ASSETS.md) (brand assets and third-party notices).

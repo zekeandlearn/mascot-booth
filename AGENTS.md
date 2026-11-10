@@ -9,5 +9,5 @@ Instructions for AI coding agents (Claude Code, Codex) working on this repo.
 - Never print, log or write the ElevenLabs key. It is read from the environment only.
 - Verify visual changes with `node bin/mascot-booth.mjs stills <film> --at ... --sheet` and look at the sheet.
   Check presenter changes with `tests/presenter-review` (`?mouth=open`, `?blink=1`).
-- Brand files and character art (`app/assets/brand/`, `app/assets/guide/`, `app/assets/sample/`, `docs/`) are all rights reserved (see LICENSE). Never use them in templates, tests or new defaults.
+- Brand files and character art (`app/assets/brand/`, `app/assets/guide/`, `app/assets/sample/`, `docs/`) are all rights reserved (see ASSETS.md). Never use them in templates, tests or new defaults.
 - Commit messages use conventional prefixes (`feat:`, `fix:`, `docs:`, `chore:`).
